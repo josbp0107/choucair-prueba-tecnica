@@ -5,14 +5,14 @@ import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
 public class SearchCoursePage extends PageObject {
-    public static final Target BUTTON_UC = Target.the("Selecciona la universidad choucair")
-            .located(By.xpath("//div[@id='universidad']//strong"));
-    public static final Target INPUT_COURSE = Target.the("Busca el curso")
-            .located(By.id("coursesarchbox"));
-    public static final Target BUTTON_GO = Target.the("Da click para buscar el curso")
-            .located(By.xpath("//button[@class='btn btn-secundary']"));
-    public static final Target SELECT_COURSE = Target.the("Da click para buscar el curso")
-            .located(By.xpath("//h4[contains(text(), 'Recursos Automatización Bancolombia')]"));
-    public static final Target NAME_COURSE = Target.the("Extrae el nombre del curso")
-            .located(By.xpath("//h1[contains(text(), 'Recursos Automatización Bancolombia')]"));
+    public static final Target BUTTON_UC = Target.the("Select Cursos y Certificados")
+            .located(By.xpath("//div[@id='certificaciones']/a"));
+    public static final Target INPUT_COURSE = Target.the("Search the course")
+            .located(By.id("coursesearchbox"));
+    public static final Target BUTTON_GO = Target.the("Click on button Go")
+            .located(By.xpath("//button[@class='btn btn-secondary']"));
+    public static final Target SELECT_COURSE = Target.the("Metodologia Bancolombia")
+            .located(By.xpath("//section/div/div/div/h4/a"));
+    public static final Target NAME_COURSE = Target.the("Extract the course name")
+            .located(By.className("coursename"));
 }
