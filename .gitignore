@@ -136,6 +136,7 @@ hs_err_pid*
 
 # Others
 .idea
+target/
 
 # Driver selenium
 test/resources/driver/
