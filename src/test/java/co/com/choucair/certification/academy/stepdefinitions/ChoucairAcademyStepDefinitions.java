@@ -1,5 +1,6 @@
 package co.com.choucair.certification.academy.stepdefinitions;
 
+import co.com.choucair.certification.academy.model.AcademyChoucairData;
 import co.com.choucair.certification.academy.questions.Answer;
 import co.com.choucair.certification.academy.tasks.Login;
 import co.com.choucair.certification.academy.tasks.OpenUp;
@@ -12,6 +13,8 @@ import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
+import java.util.List;
+
 public class ChoucairAcademyStepDefinitions {
 
     // Se encarga de preparar el Scenario a nuestro Actor
@@ -21,22 +24,23 @@ public class ChoucairAcademyStepDefinitions {
     }
 
     @Given("^than brandon wants to learn automation at the academy Choucair$")
-    public void thanBrandonWantsToLearnAutomationAtTheAcademyChoucair() {
+    public void thanBrandonWantsToLearnAutomationAtTheAcademyChoucair(List<AcademyChoucairData> academyChoucairData) {
         // Write code here that turns the phrase above into concrete actions
-        OnStage.theActorCalled("Brandon").wasAbleTo(OpenUp.thePage(), (Login.onThePage()));
+        OnStage.theActorCalled("Brandon").wasAbleTo(OpenUp.thePage(),
+                (Login.onThePage(academyChoucairData.get(0).getStrUser(), academyChoucairData.get(0).getStrPassword())));
     }
 
 
-    @When("^he search for the course (.*) on the choucair academy platform$")
-    public void heSearchForTheCourseRecursosAutomatizacionBancolombiaOnTheChoucairAcademyPlatform(String course) {
+    @When("^he search for the course on the choucair academy platform$")
+    public void heSearchForTheCourseRecursosAutomatizacionBancolombiaOnTheChoucairAcademyPlatform(List<AcademyChoucairData> academyChoucairData) {
         // Write code here that turns the phrase above into concrete actions
-        OnStage.theActorInTheSpotlight().attemptsTo(Search.the(course));
+        OnStage.theActorInTheSpotlight().attemptsTo(Search.the(academyChoucairData.get(0).getStrCourse()));
     }
 
     //Questions
-    @Then("^he finds the course called resources (.*)$")
-    public void heFindTheCourseCalledResourcesRecursosAutomatizacionBancolombia(String question) {
+    @Then("^he finds the course called$")
+    public void heFindTheCourseCalledResourcesRecursosAutomatizacionBancolombia(List<AcademyChoucairData> academyChoucairData) {
         // Write code here that turns the phrase above into concrete actions
-        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Answer.toThe(question)));
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Answer.toThe(academyChoucairData.get(0).getStrCourse())));
     }
 }
